@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amzc.demo.dao.DepartmentDao" >
+    <!--sql语句后面加分号会报错误-->
+    <select id="getDepartment" resultType="com.amzc.demo.domain.Department">
+        select * from dept_inf
+  </select>
+
+    <delete id="removeDepartment" parameterType="int">
+        delete from dept_inf
+        where id = #{id}
+    </delete>
+
+    <insert id="addDepartment" parameterType="com.amzc.demo.domain.Department">
+        insert into dept_inf(name,remark,master,num) value (#{name},#{remark},#{master},#{num})
+    </insert>
+
+    <update id="updateDepartment" parameterType="com.amzc.demo.domain.Department" >
+      update dept_inf set name = #{name},remark = #{remark},master = #{master},num = #{num}
+      where id = #{id}
+    </update>
+</mapper>

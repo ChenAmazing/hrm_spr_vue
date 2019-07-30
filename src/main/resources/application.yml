@@ -1,0 +1,21 @@
+server:
+  port: 8443
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/hrdb?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:Mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.amzc.demo.dao
+
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+#  reasonable分页参数合理化,如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
