@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +30,6 @@ public class LoginController {
         username = HtmlUtils.htmlEscape(username);
         if (!Objects.equals("admin", username) || !Objects.equals("123456", requestUserLogin.getPassword())) {
             String message = "账号密码错误";
-            System.out.println("test");
             return new Result(400);
         } else {
             return new Result(200);
